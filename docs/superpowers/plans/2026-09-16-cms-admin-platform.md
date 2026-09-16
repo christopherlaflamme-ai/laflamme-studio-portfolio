@@ -133,7 +133,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("src/images");
-  eleventyConfig.addPassthroughCopy({ "admin": "admin" });
+  // NOTE: no passthrough copy for `admin/` here — Task 1 deletes the old
+  // Webflow-only files under admin/, leaving the directory empty/absent
+  // until Task 7 recreates it with the real Decap CMS files. Adding the
+  // passthrough copy before the directory exists again risks an Eleventy
+  // build error over a missing source path; Task 7 adds this line instead.
 
   eleventyConfig.addCollection("allProjects", (collectionApi) =>
     collectionApi.getFilteredByGlob("src/projects/*.md")
@@ -965,10 +969,11 @@ EOF
 ## Task 6: Homepage featured section + portfolio grid with category filter
 
 **Files:**
-- Create: `src/_data/sortedProjects.js`, `src/_data/allCategoryNames.js`
-- Modify: `src/index.njk` (homepage — create if Task 2 did not already produce it; see Step 1)
-- Modify: `src/portfolio.njk` (create)
+- Create: `src/_data/sortedProjects.js`
+- Create: `src/index.njk` (homepage — Task 2 did not create this; the empty CMS placeholder section is why it's built here instead)
+- Create: `src/portfolio.njk`
 - Create: `src/js/portfolio-filter.js`
+- Delete: `index.html`, `portfolio.html` (repo root — the originals these two new files supersede; both are Webflow exports with empty CMS placeholders, confirmed unreferenced by anything except each other's nav links, which every page already points at `index.html`/`portfolio.html` as bare filenames that will resolve to the new Eleventy-built versions once `_site/` is regenerated)
 
 **Interfaces:**
 - Consumes: `lib/sortProjects.mjs` (Task 5), `lib/filterProjectsByCategories.mjs` (Task 5, used client-side by loading it as a plain script — see Step 5), the `allProjects`/`allCategories` Eleventy collections (Task 1's `.eleventy.js`).
@@ -1219,7 +1224,17 @@ Expected: the first count is `21` (one `data-categories`-bearing grid item per p
 
 Using the claude-in-chrome tool (or the user's own browser): run `npm run serve`, open `http://localhost:8080/portfolio.html`, click one category tag and confirm only matching projects remain visible, click a second tag and confirm the union (OR) of both categories is shown, click both again to deselect and confirm the full grid returns.
 
-- [ ] **Step 8: Commit**
+- [ ] **Step 8: Delete the superseded root-level originals**
+
+```bash
+git rm index.html portfolio.html
+npm run build
+ls _site/index.html _site/portfolio.html
+```
+
+Expected: both old root files are removed from the repo, and the build still produces `_site/index.html` and `_site/portfolio.html` — now generated from `src/index.njk` and `src/portfolio.njk` instead.
+
+- [ ] **Step 9: Commit**
 
 ```bash
 git add -A
@@ -1237,9 +1252,18 @@ EOF
 
 **Files:**
 - Create: `admin/index.html`, `admin/config.yml`
+- Modify: `.eleventy.js` (add the `admin/` passthrough copy, deferred from Task 1 — see that task's note)
 
 **Interfaces:**
 - Produces: a working `/admin` login + editing UI once DecapBridge is configured in Task 8 (this task's build/test steps verify the static config is well-formed and served; live login cannot be tested until Task 8's account setup exists).
+
+- [ ] **Step 0: Add the `admin/` passthrough copy to `.eleventy.js`**
+
+Task 1 deliberately omitted this because `admin/` was empty/absent at that point. Now that this task is about to give it real content, add this line inside the existing `module.exports = function (eleventyConfig) { ... }` body, alongside the other `addPassthroughCopy` calls:
+
+```js
+  eleventyConfig.addPassthroughCopy("admin");
+```
 
 - [ ] **Step 1: Create the Decap CMS loader page**
 
