@@ -1,0 +1,56 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# DecapBridge replaces Netlify's deprecated Identity + Git Gateway combo by
+# proxying the same `git-gateway` backend protocol Decap CMS already speaks,
+# so no backend-name change is required here — only the site-level
+# DecapBridge script/config added in Task 8 redirects auth through it.
+
+media_folder: "src/images/uploads/{{slug}}"
+public_folder: "/images/uploads/{{slug}}"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "src/projects"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Type of work", name: "type_of_work", widget: "string" }
+      - label: "Categories"
+        name: "categories"
+        widget: "select"
+        multiple: true
+        options:
+          - "Web Design"
+          - "Visual Identity"
+          - "Product and Packaging Design"
+          - "Publication and Typographic Design"
+          - "Illustrative Design"
+          - "Advertising and Marketing Design"
+          - "Photography"
+      - { label: "Client", name: "client", widget: "string" }
+      - { label: "Year", name: "year", widget: "number", value_type: "int" }
+      - { label: "Live version URL", name: "live_url", widget: "string", required: false }
+      - { label: "Hero image", name: "hero_image", widget: "image" }
+      - { label: "Gallery 1", name: "gallery_1", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+      - { label: "Gallery 2", name: "gallery_2", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Featured order", name: "featured_order", widget: "number", required: false, hint: "Only matters when Featured is checked. Lower numbers show first." }
+      - { label: "Description", name: "body", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/project.njk" }
+      - { label: "Permalink", name: "permalink", widget: "hidden", default: "/projects/{{slug}}.html" }
+
+  - name: "categories"
+    label: "Categories"
+    folder: "src/categories"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
