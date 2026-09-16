@@ -14,7 +14,7 @@
       item.hidden = !matches;
     });
     buttons.forEach((btn) => {
-      btn.classList.toggle("is-active", selected.has(btn.dataset.category));
+      btn.classList.toggle("w--current", selected.has(btn.dataset.category));
     });
   }
 
