@@ -3,9 +3,15 @@
     <div class="main-grid nav-mobile">
       <div class="brand-logo-wrapper">
         <div class="flex-vertical">
+          {% if page.url == "/" %}
+          <a href="{{ rootPath }}index.html" aria-current="page" class="nav-brand w-nav-brand w--current">
+            <div class="text-block-2">Christopher Laflamme</div>
+          </a>
+          {% else %}
           <a href="{{ rootPath }}index.html" class="nav-brand w-nav-brand">
             <div class="text-block-2">Christopher Laflamme</div>
           </a>
+          {% endif %}
         </div>
       </div>
       <nav role="navigation" class="menu-nav w-nav-menu">
