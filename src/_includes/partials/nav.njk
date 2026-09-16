@@ -10,7 +10,7 @@
       </div>
       <nav role="navigation" class="menu-nav w-nav-menu">
         <div class="menu-links-wrapper">
-          {% if page.url == "/index.html" %}
+          {% if page.url == "/" %}
           <a href="{{ rootPath }}index.html" aria-current="page" class="floating-item w-inline-block w--current">
             <div>Home</div>
           </a>
@@ -19,9 +19,15 @@
             <div>Home</div>
           </a>
           {% endif %}
+          {% if page.url == "/portfolio.html" %}
+          <a href="{{ rootPath }}portfolio.html" aria-current="page" class="floating-item w-inline-block w--current">
+            <div>Projects</div>
+          </a>
+          {% else %}
           <a href="{{ rootPath }}portfolio.html" class="floating-item w-inline-block">
             <div>Projects</div>
           </a>
+          {% endif %}
           {% if page.url == "/about.html" %}
           <a href="{{ rootPath }}about.html" aria-current="page" class="floating-item w-inline-block w--current">
             <div>About</div>

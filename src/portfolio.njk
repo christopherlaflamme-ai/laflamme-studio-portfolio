@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+title: Projects
+rootPath: ""
+permalink: "/portfolio.html"
+---
+<div class="hero-scroll-trigger-animation"></div>
+<div class="page-wrapper">
+  <div class="section">
+    <div class="container inner-hero w-container">
+      <div class="main-grid">
+        <div class="inner-title-wrapper">
+          <h1>Peek into my latest design projects</h1>
+        </div>
+        <div class="cases-wrapper">
+          <div class="categories-wrapper margin-bottom-xxxs">
+            <div class="flex-horizontal categories" id="category-filter-bar">
+              {% for category in collections.allCategories %}
+              <div class="category-item without-border">
+                <button type="button" class="tag category w-inline-block" data-category="{{ category.data.name }}">
+                  <div>{{ category.data.name }}</div>
+                </button>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="project-grid categories" id="project-grid">
+            {% for project in sortedProjects %}
+            <div class="project-item categories" data-categories="{{ project.data.categories | join(',') }}">
+              <a href="projects/{{ project.data.slug }}.html" class="project-link w-inline-block" style="background-image:url(&quot;.{{ project.data.hero_image }}&quot;)">
+                <div class="project-top-info-wrapper">
+                  <div class="project-additional-info">{{ project.data.title }}</div>
+                  <div class="project-top-info-wrapper">
+                    <div class="project-additional-info">{{ project.data.type_of_work }}</div>
+                    <div class="project-additional-info">{{ project.data.year }}</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/portfolio-filter.js"></script>

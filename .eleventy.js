@@ -16,6 +16,10 @@ module.exports = function (eleventyConfig) {
     collectionApi.getFilteredByGlob("src/categories/*.md")
   );
 
+  eleventyConfig.addFilter("featuredOnly", (projects) =>
+    (projects || []).filter((p) => p.data.featured)
+  );
+
   return {
     dir: {
       input: "src",
