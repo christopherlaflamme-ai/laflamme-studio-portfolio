@@ -10,15 +10,27 @@
       </div>
       <nav role="navigation" class="menu-nav w-nav-menu">
         <div class="menu-links-wrapper">
+          {% if page.url == "/index.html" %}
+          <a href="{{ rootPath }}index.html" aria-current="page" class="floating-item w-inline-block w--current">
+            <div>Home</div>
+          </a>
+          {% else %}
           <a href="{{ rootPath }}index.html" class="floating-item w-inline-block">
             <div>Home</div>
           </a>
+          {% endif %}
           <a href="{{ rootPath }}portfolio.html" class="floating-item w-inline-block">
             <div>Projects</div>
           </a>
+          {% if page.url == "/about.html" %}
+          <a href="{{ rootPath }}about.html" aria-current="page" class="floating-item w-inline-block w--current">
+            <div>About</div>
+          </a>
+          {% else %}
           <a href="{{ rootPath }}about.html" class="floating-item w-inline-block">
             <div>About</div>
           </a>
+          {% endif %}
           <a href="mailto:christopher.lafla@gmail.com" class="floating-item w-inline-block">
             <div>Contacts</div>
           </a>

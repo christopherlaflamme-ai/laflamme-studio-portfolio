@@ -2,7 +2,7 @@
 <html lang="en-CA">
 <head>
   <meta charset="utf-8">
-  <title>{{ title }} - Laflamme</title>
+  <title>{% if title_suffix == false %}{{ title }}{% else %}{{ title }} - Laflamme{% endif %}</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Eleventy" name="generator">
   <link href="{{ rootPath }}css/normalize.css" rel="stylesheet" type="text/css">

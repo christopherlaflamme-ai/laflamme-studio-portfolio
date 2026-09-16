@@ -54,12 +54,24 @@
           <div class="footer-bottom-wrapper right-align animation-reveal-2">
             <div class="footer-links-wrapper">
               <div class="footer-links-container">
+                {% if page.url == "/terms-of-use.html" %}
+                <a href="{{ rootPath }}terms-of-use.html" aria-current="page" class="nav-link-wrapper text-color-white-75 w-inline-block w--current">
+                  <div class="nav-link-text text-shadow-light non-capitilized">Terms of Use</div>
+                </a>
+                {% else %}
                 <a href="{{ rootPath }}terms-of-use.html" class="nav-link-wrapper text-color-white-75 w-inline-block">
                   <div class="nav-link-text text-shadow-light non-capitilized">Terms of Use</div>
                 </a>
+                {% endif %}
+                {% if page.url == "/privacy-policy.html" %}
+                <a href="{{ rootPath }}privacy-policy.html" aria-current="page" class="nav-link-wrapper text-color-white-75 w-inline-block w--current">
+                  <div class="nav-link-text text-shadow-light non-capitilized">Privacy Policy</div>
+                </a>
+                {% else %}
                 <a href="{{ rootPath }}privacy-policy.html" class="nav-link-wrapper text-color-white-75 w-inline-block">
                   <div class="nav-link-text text-shadow-light non-capitilized">Privacy Policy</div>
                 </a>
+                {% endif %}
               </div>
             </div>
           </div>
