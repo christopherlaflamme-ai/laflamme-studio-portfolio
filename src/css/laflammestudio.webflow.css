@@ -1568,7 +1568,8 @@ figcaption {
   display: block;
 }
 
-.floating-item.w--current {
+.floating-item.w--current,
+.floating-item:hover {
   background-color: var(--black);
   color: var(--white);
 }
