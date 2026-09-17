@@ -41,7 +41,6 @@ collections:
     identifier_field: "title"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "hidden", default: "{{slug}}" }
       - { label: "Type of work", name: "type_of_work", widget: "string" }
       - label: "Categories"
         name: "categories"
@@ -65,7 +64,13 @@ collections:
       - { label: "Featured order", name: "featured_order", widget: "number", required: false, hint: "Only matters when Featured is checked. Lower numbers show first." }
       - { label: "Description", name: "body", widget: "markdown" }
       - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/project.njk" }
-      - { label: "Permalink", name: "permalink", widget: "hidden", default: "/projects/{{slug}}.html" }
+      # No "Slug"/"Permalink" fields: Decap's own `slug: "{{slug}}"` collection
+      # setting already names the file correctly, and the Eleventy layout
+      # (src/_includes/layouts/project.njk) derives the real permalink from
+      # that filename via `page.fileSlug` — see its front matter default.
+      # A `{{slug}}` default on an arbitrary hidden field is NOT substituted
+      # by Decap (confirmed via a live test: it wrote the literal string
+      # "{{slug}}" into the file), so those two fields must not come back.
 
   - name: "categories"
     label: "Categories"
