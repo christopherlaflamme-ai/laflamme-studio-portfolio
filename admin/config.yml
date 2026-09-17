@@ -29,8 +29,14 @@ site_url: https://lighthearted-jalebi-893ef9.netlify.app
 # NOTE: `branch: cms-admin-platform` — this must be updated to `main` once the
 # PR merges and Netlify's production branch is switched back to main.
 
-media_folder: "src/images/uploads/{{slug}}"
-public_folder: "/images/uploads/{{slug}}"
+# Flat upload folder, not per-project: Decap does not know a brand-new
+# entry's final slug yet at the moment an image is uploaded during entry
+# creation, so a `{{slug}}`-templated folder here produces a literal
+# "{{slug}}" directory on disk (confirmed via a live test) rather than the
+# real slug. `{{year}}`/`{{month}}`/`{{day}}` date tokens are reliably
+# supported if per-period organization is ever wanted instead.
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: "projects"
