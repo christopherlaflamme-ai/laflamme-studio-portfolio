@@ -19,7 +19,7 @@ collections:
     identifier_field: "title"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "hidden", default: "{{slug}}" }
       - { label: "Type of work", name: "type_of_work", widget: "string" }
       - label: "Categories"
         name: "categories"

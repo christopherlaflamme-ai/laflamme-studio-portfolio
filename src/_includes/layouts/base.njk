@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html lang="en-CA">
+<html data-wf-page="{{ wf_page_id }}" data-wf-site="6455b3581098951b6bdb59eb" lang="en-CA">
 <head>
   <meta charset="utf-8">
   <title>{% if title_suffix == false %}{{ title }}{% else %}{{ title }} - Laflamme{% endif %}</title>
+  {%- set description = meta_description | default("Laflamme.Studio – Christopher Laflamme's Portfolio website") %}
+  <meta content="{{ description }}" name="description">
+  <meta content="{{ description }}" property="og:description">
+  <meta property="og:type" content="website">
+  <meta content="{{ description }}" name="twitter:description">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Eleventy" name="generator">
   <link href="{{ rootPath }}css/normalize.css" rel="stylesheet" type="text/css">

@@ -9,7 +9,7 @@ module.exports = async function () {
   const projects = files.map((file) => {
     const raw = fs.readFileSync(path.join(dir, file), "utf-8");
     const { data } = matter(raw);
-    return { data, url: `/projects/${data.slug}.html` };
+    return { data };
   });
   return sortProjects(projects.map((p) => p.data)).map((data) => ({
     data,

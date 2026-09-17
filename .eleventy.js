@@ -5,9 +5,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("admin");
 
-  eleventyConfig.addCollection("allProjects", (collectionApi) =>
-    collectionApi.getFilteredByGlob("src/projects/*.md")
-  );
   eleventyConfig.addCollection("allCategories", (collectionApi) =>
     collectionApi.getFilteredByGlob("src/categories/*.md")
   );
@@ -17,6 +14,10 @@ module.exports = function (eleventyConfig) {
   );
 
   return {
+    // Project descriptions come from the CMS as Markdown; rendering them
+    // through a template engine would try to parse literal `{{`/`{%` in
+    // author-written copy and fail the build.
+    markdownTemplateEngine: false,
     dir: {
       input: "src",
       output: "_site",

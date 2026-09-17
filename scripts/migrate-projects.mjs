@@ -1,3 +1,4 @@
+// One-time migration script: already run, and the flat `projects/` directory it reads no longer exists. Kept only for provenance/reference.
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { load } from "cheerio";
 import yaml from "js-yaml";
