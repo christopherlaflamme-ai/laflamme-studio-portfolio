@@ -1,0 +1,89 @@
+---
+layout: layouts/base.njk
+title: Laflamme
+title_suffix: false
+rootPath: ""
+permalink: "/index.html"
+last_updated: "15 - 09 - 2026"
+wf_page_id: "65d155d22899dc24f23ac512"
+---
+<div class="hero-scroll-trigger-animation"></div>
+<div class="page-wrapper">
+  <div class="section">
+    <div class="container hero w-container">
+      <div class="main-grid hero">
+        <h1 id="w-node-eea5593f-5096-bcbb-548c-7aca4a2dc20e-f23ac512" class="bilboard-heading">Designer with a strong interest within Visual Identity, Art Directing and 3D/Product design.</h1>
+        <div id="w-node-f165bb0d-0b26-088e-fc83-d9e2fbab0e05-f23ac512" class="_1st-col-max-width top-margin-m">
+          <div class="flex-vertical full-hight space-between">
+            <p class="paragraph small">Welcome to my website! Feel free to get in touch with me at any time for any inquiries!</p>
+            <div class="spacer _20"></div>
+            <div class="flex-horizontal gap-medium">
+              <p class="paragraph small">Last updated</p>
+              <p class="paragraph small">{{ last_updated }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cursor">
+        <div class="cursor-dot-1">
+          <div class="cursor-text">OPen</div>
+        </div>
+        <div class="cursor-dot-2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container without-top-padding w-container">
+      <div id="w-node-c7b1d432-6a7b-b5db-72c7-5050b57bfb5d-f23ac512" class="project-grid">
+        {% for project in sortedProjects | featuredOnly %}
+        <div class="project-item">
+          <a href="projects/{{ project.data.slug }}.html" class="project-link w-inline-block" style="background-image:url(&quot;.{{ project.data.hero_image }}&quot;)">
+            <div class="project-top-info-wrapper">
+              <div class="project-additional-info">{{ project.data.title }}</div>
+              <div class="project-top-info-wrapper">
+                <div class="project-additional-info">{{ project.data.type_of_work }}</div>
+                <div class="project-additional-info">{{ project.data.year }}</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="spacer _40"></div>
+      <div class="flex-horizontal">
+        <div class="magnet-light">
+          <a href="portfolio.html" class="burger-wrapper new w-inline-block">
+            <div>View all</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container without-top-padding w-container">
+      <div class="main-grid">
+        <div class="_1st-col-max-width top-margin-m animation-reveal-1">
+          <p class="paragraph small text-color-grey-60">About me</p>
+          <div class="spacer _16"></div>
+        </div>
+        <div id="w-node-_55bb641a-b135-dace-f415-0b3913f09126-f23ac512" class="flex-vertical animation-reveal-1">
+          <h2 id="w-node-_910b21a9-d80c-8f8d-292b-a28d2f01ecf4-f23ac512" class="heading">Currently working as a <span class="span-text-highlight">Freelance Designer</span>. </h2>
+          <div class="spacer _40"></div>
+          <div class="flex-horizontal align-bottom justify-space-between">
+            <div class="content-flex-col">
+              <p class="paragraph">I'm Christopher Laflamme, a Montreal-based graphic designer with a passion that started in childhood and never stopped growing. With a degree from UQAM and a background in freelancing, I focus on branding, print, and spatial design—while also exploring hands-on projects like furniture, immersive spaces, and photography. I love crafting thoughtful visuals and collaborating to bring bold ideas to life.</p>
+            </div>
+            <div class="magnet-dark">
+              <a href="about.html" class="burger-wrapper new ghost w-inline-block">
+                <div class="text-block-4">Read more</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="overflow-hidden"><img src="images/P_HOME_CL_0001.jpg" loading="lazy" sizes="(max-width: 3024px) 100vw, 3024px" srcset="images/P_HOME_CL_0001-p-500.jpg 500w, images/P_HOME_CL_0001-p-800.jpg 800w, images/P_HOME_CL_0001-p-1080.jpg 1080w, images/P_HOME_CL_0001-p-1600.jpg 1600w, images/P_HOME_CL_0001-p-2000.jpg 2000w, images/P_HOME_CL_0001-p-2600.jpg 2600w, images/P_HOME_CL_0001.jpg 3024w" alt="" class="full-width-img"></div>
+  </div>
+</div>

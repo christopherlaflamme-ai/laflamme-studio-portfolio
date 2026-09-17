@@ -1,0 +1,4 @@
+---
+name: Photography
+slug: photography
+---

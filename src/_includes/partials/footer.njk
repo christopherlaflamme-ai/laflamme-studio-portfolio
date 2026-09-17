@@ -1,0 +1,82 @@
+<div class="footer-wrapper">
+  <div id="contacts" class="section footer">
+    <div class="container footer w-container">
+      <div class="grid">
+        <div class="grid-item animation-reveal-1">
+          <div class="flex-horizontal justify-space-between align-baseline">
+            <div class="flex-item-33">
+              <p class="paragraph extra-small">Portfolio 2019 - 2025</p>
+            </div>
+            <div class="flex-item-33 center">
+              <p class="paragraph">Christopher Laflamme</p>
+            </div>
+            <div class="flex-item-33 right">
+              <p class="paragraph extra-small">45.500135&#x27;&#x27; N, -73.568854&#x27;&#x27; W</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-contact-wrapper animation-reveal-2">
+          <p class="paragraph extra-small text-color-grey-60">Have a nice project?</p>
+          <div class="spacer _20"></div>
+          <a href="mailto:christopher.lafla@gmail.com" class="contact-email-link w-inline-block">
+            <div class="overflow-hidden">
+              <div class="link-floating-text contact-email-text-shadow">Get in touch</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="grid-item _33 footer-2">
+          <div class="footer-bottom-wrapper animation-reveal-2">
+            <div class="paragraph extra-small">© 2025 Laflamme.Studio. All rights reserved. </div>
+          </div>
+        </div>
+        <div class="grid-item _33 footer-center">
+          <div class="footer-bottom-wrapper center-align animation-reveal-2">
+            <a href="https://www.linkedin.com/in/christopher-laflamme/" target="_blank" class="button stroke white w-inline-block">
+              <div class="link-text-wrapper">
+                <div class="link-floating-text shadow-medium-light">LinkedIn</div>
+              </div>
+            </a>
+            <a href="https://www.behance.net/laflamme" target="_blank" class="button stroke white w-inline-block">
+              <div class="link-text-wrapper">
+                <div class="link-floating-text shadow-medium-light">Behance</div>
+              </div>
+            </a>
+            <a href="https://instagram.com/chris_laflamme" target="_blank" class="button stroke white w-inline-block">
+              <div class="link-text-wrapper">
+                <div class="link-floating-text shadow-medium-light">Instagram</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="grid-item _33 footer-3">
+          <div class="footer-bottom-wrapper right-align animation-reveal-2">
+            <div class="footer-links-wrapper">
+              <div class="footer-links-container">
+                {% if page.url == "/terms-of-use.html" %}
+                <a id="w-node-_9e2749be-79fc-14eb-b8bc-ebef663258ff-b8e98f75" href="{{ rootPath }}terms-of-use.html" aria-current="page" class="nav-link-wrapper text-color-white-75 w-inline-block w--current">
+                  <div class="nav-link-text text-shadow-light non-capitilized">Terms of Use</div>
+                </a>
+                {% else %}
+                <a id="w-node-_9e2749be-79fc-14eb-b8bc-ebef663258ff-b8e98f75" href="{{ rootPath }}terms-of-use.html" class="nav-link-wrapper text-color-white-75 w-inline-block">
+                  <div class="nav-link-text text-shadow-light non-capitilized">Terms of Use</div>
+                </a>
+                {% endif %}
+                {% if page.url == "/privacy-policy.html" %}
+                <a href="{{ rootPath }}privacy-policy.html" aria-current="page" class="nav-link-wrapper text-color-white-75 w-inline-block w--current">
+                  <div class="nav-link-text text-shadow-light non-capitilized">Privacy Policy</div>
+                </a>
+                {% else %}
+                <a href="{{ rootPath }}privacy-policy.html" class="nav-link-wrapper text-color-white-75 w-inline-block">
+                  <div class="nav-link-text text-shadow-light non-capitilized">Privacy Policy</div>
+                </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

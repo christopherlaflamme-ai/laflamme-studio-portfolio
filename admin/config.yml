@@ -1,0 +1,89 @@
+# DecapBridge PKCE auth config (from decapbridge.com dashboard, site "Laflamme Studio")
+backend:
+  name: git-gateway
+  repo: christopherlaflamme-ai/laflamme-studio-portfolio
+  branch: cms-admin-platform
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/ca9d0e66-6e68-433a-9f37-3a39d4df230c/pkce
+  auth_token_endpoint: /sites/ca9d0e66-6e68-433a-9f37-3a39d4df230c/token
+  gateway_url: https://gateway.decapbridge.com
+
+  commit_messages:
+    create: Create {{collection}} "{{slug}}" – {{author-name}} <{{author-login}}>
+    update: Update {{collection}} "{{slug}}" – {{author-name}} <{{author-login}}>
+    delete: Delete {{collection}} "{{slug}}" – {{author-name}} <{{author-login}}>
+    uploadMedia: Upload "{{path}}" – {{author-name}} <{{author-login}}> via Decap
+    deleteMedia: Delete "{{path}}" – {{author-name}} <{{author-login}}> via Decap
+    openAuthoring: Message {{message}} – {{author-name}} <{{author-login}}> via Decap
+
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
+
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
+site_url: https://lighthearted-jalebi-893ef9.netlify.app
+
+# NOTE: `branch: cms-admin-platform` — this must be updated to `main` once the
+# PR merges and Netlify's production branch is switched back to main.
+
+# Flat upload folder, not per-project: Decap does not know a brand-new
+# entry's final slug yet at the moment an image is uploaded during entry
+# creation, so a `{{slug}}`-templated folder here produces a literal
+# "{{slug}}" directory on disk (confirmed via a live test) rather than the
+# real slug. `{{year}}`/`{{month}}`/`{{day}}` date tokens are reliably
+# supported if per-period organization is ever wanted instead.
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "src/projects"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Type of work", name: "type_of_work", widget: "string" }
+      - label: "Categories"
+        name: "categories"
+        widget: "select"
+        multiple: true
+        options:
+          - "Web Design"
+          - "Visual Identity"
+          - "Product and Packaging Design"
+          - "Publication and Typographic Design"
+          - "Illustrative Design"
+          - "Advertising and Marketing Design"
+          - "Photography"
+      - { label: "Client", name: "client", widget: "string" }
+      - { label: "Year", name: "year", widget: "number", value_type: "int" }
+      - { label: "Live version URL", name: "live_url", widget: "string", required: false }
+      - { label: "Hero image", name: "hero_image", widget: "image" }
+      - { label: "Gallery 1", name: "gallery_1", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+      - { label: "Gallery 2", name: "gallery_2", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Featured order", name: "featured_order", widget: "number", required: false, hint: "Only matters when Featured is checked. Lower numbers show first." }
+      - { label: "Description", name: "body", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/project.njk" }
+      # No "Slug"/"Permalink" fields: Decap's own `slug: "{{slug}}"` collection
+      # setting already names the file correctly, and the Eleventy layout
+      # (src/_includes/layouts/project.njk) derives the real permalink from
+      # that filename via `page.fileSlug` — see its front matter default.
+      # A `{{slug}}` default on an arbitrary hidden field is NOT substituted
+      # by Decap (confirmed via a live test: it wrote the literal string
+      # "{{slug}}" into the file), so those two fields must not come back.
+
+  - name: "categories"
+    label: "Categories"
+    folder: "src/categories"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }

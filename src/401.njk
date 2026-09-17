@@ -1,0 +1,39 @@
+---
+layout: layouts/base.njk
+title: Protected page
+rootPath: ""
+permalink: "/401.html"
+show_footer: false
+title_suffix: false
+wf_page_id: "65d155d22899dc24f23ac513"
+---
+  <div class="utility-page-wrap">
+    <div class="utility-page-content w-password-page w-form">
+      <form action="/.wf_auth" method="post" id="email-form" name="email-form" data-name="Email Form" class="utility-page-form w-password-page" data-wf-page-id="65d155d22899dc24f23ac513" data-wf-element-id="616a73d25ecc23169bc7d4d100000000000c">
+        <h2>Protected Page</h2>
+        <div class="spacer _24"></div><input class="text-field light w-password-page w-input" autofocus="true" maxlength="256" name="pass" data-name="field" placeholder="Enter your password" type="password" id="pass">
+        <div class="spacer _12"></div>
+        <div class="flex-horizontal justify-center">
+          <div class="button submit dark"><input type="submit" data-wait="" class="submit-button w-password-page w-button" value="">
+            <div class="link-text-wrapper">
+              <div class="link-floating-text shadow-medium-light">Submit</div>
+            </div>
+            <div class="link-arrow w-embed"><svg width="100%" height="100%" style="" viewbox="0 0 12 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.5 0.585938L11.7071 5.79304C12.0976 6.18357 12.0976 6.81673 11.7071 7.20726L6.5 12.4144L5.08579 11.0002L8.58579 7.50015H0V5.50015H8.58579L5.08579 2.00015L6.5 0.585938Z" fill="currentColor"></path>
+              </svg></div>
+          </div>
+        </div>
+        <div class="error-message w-password-page w-form-fail">
+          <div>Incorrect password. Please try again.</div>
+        </div>
+        <div style="display:none" class="w-password-page w-embed w-script"><input type="hidden" name="path" value="<%WF_FORM_VALUE_PATH%>"><input type="hidden" name="page" value="<%WF_FORM_VALUE_PAGE%>"></div>
+        <div style="display:none" class="w-password-page w-embed w-script">
+          <script type="application/javascript">(function _handlePasswordPageOnload() {
+	  if (/[?&]e=1(&|$)/.test(document.location.search)) {
+	    document.querySelector('.w-password-page.w-form-fail').style.display = 'block';
+	  }
+	})()</script>
+        </div>
+      </form>
+    </div>
+  </div>

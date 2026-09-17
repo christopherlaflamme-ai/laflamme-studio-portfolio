@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+rootPath: "../"
+wf_page_id: "65d155d22899dc24f23ac51c"
+---
+<div class="hero-scroll-trigger-animation"></div>
+<div class="page-wrapper">
+  <div class="section">
+    <div class="container case-hero w-container">
+      <div class="case-hero-img-wrapper"><img src="..{{ hero_image }}" loading="lazy" alt="{{ title }}" class="case-hero-img"></div>
+      <div class="main-grid">
+        <div id="w-node-caaf867b-6358-0607-3eb5-364945160931-f23ac51c" class="flex-horizontal">
+          <div class="text-client">Type of work :</div>
+          <div class="paragraph small">{{ type_of_work }}</div>
+        </div>
+        <div id="w-node-ba333b59-46d3-fb76-9e4a-0f8eff73cd3d-f23ac51c" class="flex-horizontal justify-space-between align-baseline">
+          <div class="w-dyn-list">
+            <div role="list" class="w-dyn-items">
+              {% for category in categories %}
+              <div role="listitem" class="w-dyn-item">
+                <div class="paragraph small text-weight-semi">{{ category }}</div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% if live_url %}
+          <a href="{{ live_url }}" target="_blank" class="link small w-inline-block">
+            <div class="link-text-wrapper">
+              <div class="link-floating-text shadow-small">View Live Version</div>
+            </div>
+            <div class="link-arrow w-embed"><svg width="100%" height="100%" style="" viewbox="0 0 12 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.5 0.585938L11.7071 5.79304C12.0976 6.18357 12.0976 6.81673 11.7071 7.20726L6.5 12.4144L5.08579 11.0002L8.58579 7.50015H0V5.50015H8.58579L5.08579 2.00015L6.5 0.585938Z" fill="currentColor"></path>
+              </svg></div>
+          </a>
+          {% endif %}
+        </div>
+        <div id="w-node-e5cafed7-d303-2296-593c-47d5c11f26a4-f23ac51c" class="spacer _56"></div>
+        <h2 id="w-node-_1e5cf4cd-9b7b-fe9a-1c7a-fbc3e02b7ebb-f23ac51c" class="heading-2">{{ title }}</h2>
+        <div id="w-node-a9cdfeef-c2c6-f055-e9f3-0295a7faa6d0-f23ac51c" class="row-items-wrapper">
+          <div id="w-node-_06f9b971-910a-37f2-e5d3-620399c39c55-f23ac51c" class="row-item base-line-align">
+            <p class="paragraph small">Client</p>
+            <p class="row-title">{{ client }}</p>
+          </div>
+          <div class="row-item base-line-align">
+            <p class="paragraph small">Year</p>
+            <p class="row-title">{{ year }}</p>
+          </div>
+        </div>
+        <div id="w-node-_519923c6-1e49-d785-1236-b0af91c96370-f23ac51c" class="case-description-wrapper">
+          <div class="rich-text-block w-richtext">
+            {{ content | safe }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container without-top-padding w-container">
+      <div class="case-images-wrapper">
+        {% for src in gallery_1 %}<img src="..{{ src }}" loading="lazy" alt="" class="case-img">{% endfor %}
+        {% for src in gallery_2 %}<img src="..{{ src }}" loading="lazy" alt="" class="case-img">{% endfor %}
+        <div class="next-project-wrapper">
+          <a href="../portfolio.html" class="next-project-link w-inline-block">
+            <div class="next-project-info">
+              <p>Explore more work</p>
+              <div class="spacer _8"></div>
+              <h1>View all projects</h1>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section"></div>
+</div>
