@@ -11,7 +11,7 @@ wf_page_id: "65d155d22899dc24f23ac51f"
     <div class="container inner-hero w-container">
       <div class="main-grid">
         <div id="w-node-e85cf084-4628-7fbc-2a3c-fcb18937340c-f23ac51f" class="inner-title-wrapper">
-          <h1>Peek into my latest design projects</h1>
+          <h1 class="hero-reveal">Peek into my latest design projects</h1>
         </div>
         <div id="w-node-_563c4c67-6080-740a-d543-ca7296031b30-f23ac51f" class="cases-wrapper">
           <div class="categories-wrapper margin-bottom-xxxs">
@@ -27,7 +27,7 @@ wf_page_id: "65d155d22899dc24f23ac51f"
           </div>
           <div class="project-grid categories" id="project-grid">
             {% for project in sortedProjects %}
-            <div class="project-item categories" data-categories="{{ project.data.categories | join(',') }}">
+            <div class="project-item categories reveal-item" data-categories="{{ project.data.categories | join(',') }}">
               <a href="projects/{{ project.data.slug }}.html" class="project-link w-inline-block" style="background-image:url(&quot;.{{ project.data.hero_image }}&quot;)">
                 <div class="project-top-info-wrapper">
                   <div class="project-additional-info">{{ project.data.title }}</div>

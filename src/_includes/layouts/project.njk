@@ -7,7 +7,7 @@ wf_page_id: "65d155d22899dc24f23ac51c"
 <div class="page-wrapper">
   <div class="section">
     <div class="container case-hero w-container">
-      <div class="case-hero-img-wrapper"><img src="..{{ hero_image }}" loading="lazy" alt="{{ title }}" class="case-hero-img"></div>
+      <div class="case-hero-img-wrapper hero-reveal"><img src="..{{ hero_image }}" loading="lazy" alt="{{ title }}" class="case-hero-img"></div>
       <div class="main-grid">
         <div id="w-node-caaf867b-6358-0607-3eb5-364945160931-f23ac51c" class="flex-horizontal">
           <div class="text-client">Type of work :</div>
@@ -35,7 +35,7 @@ wf_page_id: "65d155d22899dc24f23ac51c"
           {% endif %}
         </div>
         <div id="w-node-e5cafed7-d303-2296-593c-47d5c11f26a4-f23ac51c" class="spacer _56"></div>
-        <h2 id="w-node-_1e5cf4cd-9b7b-fe9a-1c7a-fbc3e02b7ebb-f23ac51c" class="heading-2">{{ title }}</h2>
+        <h2 id="w-node-_1e5cf4cd-9b7b-fe9a-1c7a-fbc3e02b7ebb-f23ac51c" class="heading-2 hero-reveal hero-reveal-delay-1">{{ title }}</h2>
         <div id="w-node-a9cdfeef-c2c6-f055-e9f3-0295a7faa6d0-f23ac51c" class="row-items-wrapper">
           <div id="w-node-_06f9b971-910a-37f2-e5d3-620399c39c55-f23ac51c" class="row-item base-line-align">
             <p class="paragraph small">Client</p>
@@ -57,8 +57,8 @@ wf_page_id: "65d155d22899dc24f23ac51c"
   <div class="section">
     <div class="container without-top-padding w-container">
       <div class="case-images-wrapper">
-        {% for src in gallery_1 %}<img src="..{{ src }}" loading="lazy" alt="" class="case-img">{% endfor %}
-        {% for src in gallery_2 %}<img src="..{{ src }}" loading="lazy" alt="" class="case-img">{% endfor %}
+        {% for src in gallery_1 %}<img src="..{{ src }}" loading="lazy" alt="" class="case-img reveal-item">{% endfor %}
+        {% for src in gallery_2 %}<img src="..{{ src }}" loading="lazy" alt="" class="case-img reveal-item">{% endfor %}
         <div class="next-project-wrapper">
           <a href="../portfolio.html" class="next-project-link w-inline-block">
             <div class="next-project-info">
