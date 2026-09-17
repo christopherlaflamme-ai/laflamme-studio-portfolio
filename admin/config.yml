@@ -1,11 +1,33 @@
+# DecapBridge PKCE auth config (from decapbridge.com dashboard, site "Laflamme Studio")
 backend:
   name: git-gateway
-  branch: main
+  repo: christopherlaflamme-ai/laflamme-studio-portfolio
+  branch: cms-admin-platform
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/ca9d0e66-6e68-433a-9f37-3a39d4df230c/pkce
+  auth_token_endpoint: /sites/ca9d0e66-6e68-433a-9f37-3a39d4df230c/token
+  gateway_url: https://gateway.decapbridge.com
 
-# DecapBridge replaces Netlify's deprecated Identity + Git Gateway combo by
-# proxying the same `git-gateway` backend protocol Decap CMS already speaks,
-# so no backend-name change is required here — only the site-level
-# DecapBridge script/config added in Task 8 redirects auth through it.
+  commit_messages:
+    create: Create {{collection}} "{{slug}}" – {{author-name}} <{{author-login}}>
+    update: Update {{collection}} "{{slug}}" – {{author-name}} <{{author-login}}>
+    delete: Delete {{collection}} "{{slug}}" – {{author-name}} <{{author-login}}>
+    uploadMedia: Upload "{{path}}" – {{author-name}} <{{author-login}}> via Decap
+    deleteMedia: Delete "{{path}}" – {{author-name}} <{{author-login}}> via Decap
+    openAuthoring: Message {{message}} – {{author-name}} <{{author-login}}> via Decap
+
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
+
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
+site_url: https://lighthearted-jalebi-893ef9.netlify.app
+
+# NOTE: `branch: cms-admin-platform` — this must be updated to `main` once the
+# PR merges and Netlify's production branch is switched back to main.
 
 media_folder: "src/images/uploads/{{slug}}"
 public_folder: "/images/uploads/{{slug}}"
