@@ -3,8 +3,205 @@
 <head>
   <meta charset="utf-8" />
   <title>Content Admin</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /*
+      Light cosmetic touches to the Decap CMS admin chrome, tying it to
+      laflamme.studio's palette (whitesmoke background, near-black accent,
+      Manrope typeface). Decap does not publish a stable theming API for
+      its own UI chrome (unlike the registered preview pane below, which
+      IS a supported customization point) — #nc-root is Decap's own
+      documented mount element, so it's safe to target, but internal
+      buttons/inputs use auto-generated class names that can shift on any
+      Decap version bump. If an upgrade makes these rules stop matching,
+      the site itself is unaffected; only this cosmetic layer needs
+      revisiting.
+    */
+    #nc-root {
+      background-color: whitesmoke;
+      font-family: Manrope, sans-serif;
+    }
+  </style>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js"></script>
+  <script>
+    /*
+      Preview-pane styling IS a supported Decap customization point:
+      loading the site's real stylesheets here makes the live preview
+      (shown while editing a project) render with the actual site's
+      fonts, colors, and layout classes.
+    */
+    CMS.registerPreviewStyle("../css/normalize.css");
+    CMS.registerPreviewStyle("../css/webflow.css");
+    CMS.registerPreviewStyle("../css/laflammestudio.webflow.css");
+    CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@300;400;500;600;700&display=swap");
+
+    var ProjectPreview = createClass({
+      render: function () {
+        var entry = this.props.entry;
+        var data = entry.get("data");
+        var title = data.get("title") || "";
+        var typeOfWork = data.get("type_of_work") || "";
+        var categoriesRaw = data.get("categories");
+        var categories = categoriesRaw && categoriesRaw.toJS ? categoriesRaw.toJS() : [];
+        var client = data.get("client") || "";
+        var year = data.get("year") || "";
+        var liveUrl = data.get("live_url");
+        var heroImagePath = data.get("hero_image");
+        var heroImage = heroImagePath ? this.props.getAsset(heroImagePath) : null;
+        var gallery1Raw = data.get("gallery_1");
+        var gallery1 = gallery1Raw && gallery1Raw.toJS ? gallery1Raw.toJS() : [];
+        var gallery2Raw = data.get("gallery_2");
+        var gallery2 = gallery2Raw && gallery2Raw.toJS ? gallery2Raw.toJS() : [];
+        var getAsset = this.props.getAsset;
+
+        function galleryImage(path, key) {
+          var asset = getAsset(path);
+          return h("img", {
+            key: key,
+            src: asset ? asset.toString() : "",
+            className: "case-img",
+          });
+        }
+
+        return h(
+          "div",
+          { className: "page-wrapper" },
+          h(
+            "div",
+            { className: "section" },
+            h(
+              "div",
+              { className: "container case-hero w-container" },
+              h(
+                "div",
+                { className: "case-hero-img-wrapper" },
+                heroImage &&
+                  h("img", {
+                    src: heroImage.toString(),
+                    className: "case-hero-img",
+                    alt: title,
+                  })
+              ),
+              h(
+                "div",
+                { className: "main-grid" },
+                h(
+                  "div",
+                  { className: "flex-horizontal" },
+                  h("div", { className: "text-client" }, "Type of work :"),
+                  h("div", { className: "paragraph small" }, typeOfWork)
+                ),
+                h(
+                  "div",
+                  { className: "flex-horizontal justify-space-between align-baseline" },
+                  h(
+                    "div",
+                    { className: "w-dyn-list" },
+                    h(
+                      "div",
+                      { className: "w-dyn-items" },
+                      categories.map(function (cat, i) {
+                        return h(
+                          "div",
+                          { key: i, className: "w-dyn-item" },
+                          h(
+                            "div",
+                            { className: "paragraph small text-weight-semi" },
+                            cat
+                          )
+                        );
+                      })
+                    )
+                  ),
+                  liveUrl &&
+                    h(
+                      "a",
+                      {
+                        href: liveUrl,
+                        target: "_blank",
+                        className: "link small w-inline-block",
+                      },
+                      h(
+                        "div",
+                        { className: "link-text-wrapper" },
+                        h(
+                          "div",
+                          { className: "link-floating-text shadow-small" },
+                          "View Live Version"
+                        )
+                      )
+                    )
+                ),
+                h("div", { className: "spacer _56" }),
+                h("h2", { className: "heading-2" }, title),
+                h(
+                  "div",
+                  { className: "row-items-wrapper" },
+                  h(
+                    "div",
+                    { className: "row-item base-line-align" },
+                    h("p", { className: "paragraph small" }, "Client"),
+                    h("p", { className: "row-title" }, client)
+                  ),
+                  h(
+                    "div",
+                    { className: "row-item base-line-align" },
+                    h("p", { className: "paragraph small" }, "Year"),
+                    h("p", { className: "row-title" }, String(year))
+                  )
+                ),
+                h(
+                  "div",
+                  { className: "case-description-wrapper" },
+                  h(
+                    "div",
+                    { className: "rich-text-block w-richtext" },
+                    this.props.widgetFor("body")
+                  )
+                )
+              )
+            )
+          ),
+          h(
+            "div",
+            { className: "section" },
+            h(
+              "div",
+              { className: "container without-top-padding w-container" },
+              h(
+                "div",
+                { className: "case-images-wrapper" },
+                gallery1.map(function (path, i) {
+                  return galleryImage(path, "g1-" + i);
+                }),
+                gallery2.map(function (path, i) {
+                  return galleryImage(path, "g2-" + i);
+                })
+              )
+            )
+          )
+        );
+      },
+    });
+
+    CMS.registerPreviewTemplate("projects", ProjectPreview);
+
+    var CategoryPreview = createClass({
+      render: function () {
+        var data = this.props.entry.get("data");
+        return h(
+          "div",
+          { className: "page-wrapper", style: { padding: "3rem" } },
+          h("h2", { className: "heading-2" }, data.get("name"))
+        );
+      },
+    });
+
+    CMS.registerPreviewTemplate("categories", CategoryPreview);
+  </script>
 </body>
 </html>
