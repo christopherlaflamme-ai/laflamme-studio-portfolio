@@ -1896,8 +1896,11 @@ figcaption {
 
 .case-images-wrapper {
   grid-row-gap: 1.5em;
-  flex-direction: column;
-  display: flex;
+  grid-column-gap: 1.5em;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-auto-columns: 1fr;
+  display: grid;
 }
 
 .case-img-group {
@@ -1917,6 +1920,7 @@ figcaption {
   justify-content: flex-end;
   align-items: flex-start;
   display: flex;
+  grid-column: 1 / -1;
 }
 
 .next-project-collection-list {
@@ -3103,6 +3107,10 @@ figcaption {
   }
 
   .case-img-group {
+    grid-template-columns: 1fr;
+  }
+
+  .case-images-wrapper {
     grid-template-columns: 1fr;
   }
 
