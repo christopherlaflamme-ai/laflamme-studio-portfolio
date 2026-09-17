@@ -2,7 +2,7 @@
 backend:
   name: git-gateway
   repo: christopherlaflamme-ai/laflamme-studio-portfolio
-  branch: cms-admin-platform
+  branch: main
   auth_type: pkce
   base_url: https://auth.decapbridge.com
   auth_endpoint: /sites/ca9d0e66-6e68-433a-9f37-3a39d4df230c/pkce
@@ -25,9 +25,6 @@ auth:
 
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 site_url: https://lighthearted-jalebi-893ef9.netlify.app
-
-# NOTE: `branch: cms-admin-platform` — this must be updated to `main` once the
-# PR merges and Netlify's production branch is switched back to main.
 
 # Flat upload folder, not per-project: Decap does not know a brand-new
 # entry's final slug yet at the moment an image is uploaded during entry
