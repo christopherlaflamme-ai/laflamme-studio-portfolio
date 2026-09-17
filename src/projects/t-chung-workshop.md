@@ -1,13 +1,11 @@
 ---
-layout: layouts/project.njk
 title: T. Chung Workshop
-slug: t-chung-workshop
 type_of_work: Academic team work
 categories:
   - Product and Packaging Design
 client: T. Chung Workshop
 year: 2024
-live_url: ''
+live_url: ""
 hero_image: /images/projects/t-chung-workshop/t-chung-workshop-03.jpg
 gallery_1:
   - /images/projects/t-chung-workshop/t-chung-workshop-02.jpg
@@ -35,8 +33,10 @@ gallery_2:
   - /images/projects/t-chung-workshop/t-chung-workshop-23.jpeg
   - /images/projects/t-chung-workshop/t-chung-workshop-24.jpeg
   - /images/projects/t-chung-workshop/t-chung-workshop-25.jpeg
-featured: false
+featured: true
 featured_order: null
+layout: layouts/project.njk
+slug: t-chung-workshop
 permalink: /projects/t-chung-workshop.html
 ---
 <p>This project was realized during an intensive workshop organized during the International Design Week at the École de design de l'UQAM. Tom Chung the invited designer for this workshop challenged us to find an abandoned object in the streets of Montreal and use it as inspiration to design a new system or object. Each creation had to integrate a 3D-printed part, used as a mechanism or functional accessory. The result is a coffee table made from aluminum pipes, climbing rope and a sheet of Plexiglas. An exploration where recovery, intuitive design and fabrication digital meet. During this project, I was in charge of the art direction as well as the 3D design of the printed elements.</p><p>‍</p><p>Credits : Christopher Laflamme, Xavier Tran &amp; Maëlann Bleau.</p><p>Pictures credits : @arsenikhamzin &amp; Xavier Tran</p>
