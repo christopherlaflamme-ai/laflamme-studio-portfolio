@@ -1,14 +1,12 @@
 ---
-layout: layouts/project.njk
 title: Amulet
-slug: amulet
 type_of_work: Academic work
 categories:
   - Product and Packaging Design
   - Visual Identity
 client: Amulet
 year: 2024
-live_url: ''
+live_url: ""
 hero_image: /images/projects/amulet/amulet-01.jpg
 gallery_1:
   - /images/projects/amulet/amulet-02.jpg
@@ -28,8 +26,10 @@ gallery_2:
   - /images/projects/amulet/amulet-15.jpeg
   - /images/projects/amulet/amulet-16.jpeg
   - /images/projects/amulet/amulet-17.jpeg
-featured: false
+featured: true
 featured_order: null
+layout: layouts/project.njk
+slug: amulet
 permalink: /projects/amulet.html
 ---
 <p>This project explores biomimicry, drawing inspiration from scarabs to design an eyewear box that is both functional and refined. Amulet, named in reference to lucky charms, echoes these symbolic objects present in many cultures, notably in ancient Egypt, where the scarab embodied protection and rebirth.</p>
