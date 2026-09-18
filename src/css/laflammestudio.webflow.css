@@ -3425,6 +3425,32 @@ html.is-loading .page-overlay {
   pointer-events: none;
 }
 
+/* --- Contact link feedback toast -----------------------------------------
+   mailto: links do nothing visible when a visitor has no mail client
+   configured; this guarantees a confirmation either way. */
+.contact-toast {
+  z-index: 10000;
+  color: var(--white);
+  background-color: var(--black);
+  font-family: Manrope, sans-serif;
+  font-size: 13px;
+  white-space: nowrap;
+  border-radius: 50em;
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 2em;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+.contact-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .page-overlay,
   .logo-loader-img,
