@@ -1,5 +1,5 @@
 (function () {
-  var MIN_DISPLAY_MS = 400;
+  var MIN_DISPLAY_MS = 700;
   var FALLBACK_MS = 4000;
   var start = Date.now();
   var hidden = false;

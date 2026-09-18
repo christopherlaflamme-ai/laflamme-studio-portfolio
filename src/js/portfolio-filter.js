@@ -5,7 +5,7 @@
 
   // Matches the .reveal-item transition duration in the stylesheet, so the
   // fade-out and the item's own scroll-reveal transition never disagree.
-  const TRANSITION_MS = 600;
+  const TRANSITION_MS = 1400;
 
   const buttons = Array.from(filterBar.querySelectorAll("[data-category]"));
   const items = Array.from(grid.querySelectorAll(".project-item"));
